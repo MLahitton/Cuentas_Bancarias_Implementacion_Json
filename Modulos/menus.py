@@ -1,8 +1,21 @@
 from Modulos import creacion_Clientes as creacion 
 from Modulos import creacion_Cuentas as cuentas
 from Modulos import creditos as creditos
+from Modulos.creacion_Clientes import historial
 
-print("Bienvenido al sistema de gestión de clientes del banco.")
+
+
+def mostrar_bienvenida():
+    mensaje = "BIENVENIDO AL SISTEMA DE GESTIÓN DE CLIENTES DEL BANCO"
+    ancho = len(mensaje) + 4  # Espacio para bordes y padding
+
+    print("\n" + "+" + "-" * ancho + "+")
+    print("|" + " " * ancho + "|")
+    print(f"|  {mensaje}  |")
+    print("|" + " " * ancho + "|")
+    print("+" + "-" * ancho + "+\n")
+
+mostrar_bienvenida()
 
 
 #Funcion de menu de tipos de creditos
@@ -50,6 +63,7 @@ def menu_principal():
         print("5. Retirar dinero")
         print("6. Creacion CDT")
         print("7. Créditos")
+        print("8. Historial de movimientos")
         print("11. Salir")
 
         accion = input("Seleccione una opción: ")
@@ -70,6 +84,9 @@ def menu_principal():
                 cuentas.creacion_cdt()
             case "7":
                 menu_creditos()
+            case "8":
+               historial()
+                
             case "11":
                 print("Saliendo del sistema. ¡Hasta luego!")
                 break

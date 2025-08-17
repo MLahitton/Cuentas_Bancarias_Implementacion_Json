@@ -136,23 +136,72 @@ def consultar_clientes():
         print("No hay créditos registrados.")
     print("-" * 60)
 
+
     # CDTs
-    # CDTs
-cdts = cliente.get("CDT", {})
-print(f"{'CDTs':<60}")
-if cdts:
-    print(f"{'ID':<20}{'Fecha de creación':<20}{'Monto invertido':>20}")
-    print("-" * 60)
-    for cid, datos in cdts.items():
-        fecha = datos.get("fecha_creacion", "Desconocida")
+    cdts = cliente.get("CDT", {})
+    print(f"{'CDTs':<60}")
+    if cdts:
+        print(f"{'ID':<12}{'Fecha':<15}{'Monto':>10}{'Plazo':>10}{'Ganancia':>12}{'Total':>12}")
+        print("-" * 60)
+        for cid, datos in cdts.items():
+            fecha = datos.get("fecha_creacion", "Desconocida")
+            mov = datos.get("movimientos", {}).get("1", {})
+            monto = mov.get("monto inicial", 0.0)
+            plazo_dict = mov.get("plazo", {})
+            plazo = list(plazo_dict.keys())[0] if plazo_dict else 0
+            ganancia = mov.get("ganancia", 0.0)
+            total = mov.get("total_ganancia", 0.0)
+            print(f"{cid:<12}{fecha:<15}{f'$ {monto:,.2f}':>10}{f'{plazo}m':>10}{f'$ {ganancia:,.2f}':>12}{f'$ {total:,.2f}':>12}")
+    else:
+        print("No hay CDTs registrados.")
+    print("=" * 60)
+    print("\n" + "=" * 60)
+    print(f"{'FIN DEL RESUMEN':^60}")
+    print("=" * 60)
+
+#Con esta función se puede consultar el historial de movimientos de un cliente
+def mostrar_historial(cliente):
+    print("=" * 60)
+    print(f"{'HISTORIAL DE MOVIMIENTOS':^60}")
+    print("=" * 60)
+
+    # Cuentas
+    cuentas = cliente.get("cuentas", {})
+    for cid, datos in cuentas.items():
+        print(f"\nCuenta: {cid}")
         movimientos = datos.get("movimientos", {})
-        creacion = movimientos.get("1", {})
-        monto = creacion.get("monto inicial", 0.0)
-        print(f"{cid:<20}{fecha:<20}{f'$ {monto:,.2f}':>20}")
-else:
-    print("No hay CDTs registrados.")
-print("=" * 60)
-print("\n" + "=" * 60)
-print(f"{'FIN DEL RESUMEN':^60}")
-print("=" * 60)
-    
+        for mid, mov in movimientos.items():
+            print(f"  [{mov.get('fecha', 'Sin fecha')}] {mov.get('tipo', 'Sin tipo')} - Monto: $ {mov.get('monto', 0.0):,.2f}")
+
+    # Créditos
+    creditos = cliente.get("creditos", {})
+    for cid, datos in creditos.items():
+        print(f"\nCrédito: {cid}")
+        movimientos = datos.get("movimientos", {})
+        for mid, mov in movimientos.items():
+            print(f"  [{mov.get('fecha', 'Sin fecha')}] {mov.get('tipo', 'Sin tipo')} - Monto: $ {mov.get('monto', 0.0):,.2f}")
+
+    # CDTs
+    cdts = cliente.get("CDT", {})
+    for cid, datos in cdts.items():
+        print(f"\nCDT: {cid}")
+        movimientos = datos.get("movimientos", {})
+        for mid, mov in movimientos.items():
+            monto = mov.get("monto inicial", mov.get("monto", 0.0))
+            print(f"  [{mov.get('fecha', 'Sin fecha')}] {mov.get('tipo', 'Sin tipo')} - Monto: $ {monto:,.2f}")
+
+    print("\n" + "=" * 60)
+    print(f"{'FIN DEL HISTORIAL':^60}")
+    print("=" * 60)
+
+
+def historial():
+    cc = input("Ingrese el número de cédula del cliente: ")
+    if not cc.isdigit() or len(cc) < 8:
+        print("La cédula debe contener al menos 8 dígitos.")
+        return
+    cliente = consultar_cliente(cc)
+    if cliente is None:
+        print("Cliente no encontrado.")
+        return
+    mostrar_historial(cliente)

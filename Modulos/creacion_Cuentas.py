@@ -173,19 +173,27 @@ def creacion_cdt():
     if plazo <= 0:
         print("El plazo debe ser mayor que cero.")
         return
-    ganancia = monto *(0.5* plazo)
+    ganancia = (monto*0.5)* plazo
+    ganancia = round(ganancia, 2)
+    total_ganancia = monto + ganancia
+    total_ganancia = round(total_ganancia, 2)
+    print(f"El CDT se ha creado exitosamente con un monto de {monto} y un plazo de {plazo} meses.")
+    print(f"El monto total al finalizar el CDT es: {total_ganancia} a raiz de la ganancia de {ganancia} y el monto inicial de {monto}")
+
+    print(f"La ganancia total del CDT es: {ganancia}")
     new_CDT = {
         "id": idCDT,
         "tipo": "CDT",
         "fecha_creacion": fecha,
         "saldo": 0.0,
         "movimientos": {
-            1: {
+            "1": {
                 "tipo": "CREACION",
                 "fecha": fecha,
                 "monto inicial": monto,
                 "plazo": {plazo: "meses"},
                 "ganancia": ganancia,
+                "total_ganancia": total_ganancia
 
             }
         }
