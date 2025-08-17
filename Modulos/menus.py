@@ -1,8 +1,42 @@
 from Modulos import creacion_Clientes as creacion 
 from Modulos import creacion_Cuentas as cuentas
-
+from Modulos import creditos as creditos
 
 print("Bienvenido al sistema de gestión de clientes del banco.")
+
+
+#Funcion de menu de tipos de creditos
+def menu_tipos_creditos():
+    while True:
+        accion = input("Seleccione el tipo de crédito:\n1. Crédito de Vivienda\n2. Crédito de Auto\n3. Credito libre inversion\n4. Salir\n")
+        match accion:
+            case "1":
+                creditos.credito_vivienda()
+            case "2":
+                creditos.credito_auto()
+            case "3":
+                creditos.credito_libre()
+            case "4":
+                print("Saliendo del menú de tipos de créditos.")
+                menu_creditos()
+            case _:
+                print("Opción no válida. Por favor, intente de nuevo.")
+
+#Funcion menu de creditos
+def menu_creditos():
+    accion = input("Seleccione una opción:\n1. Crear crédito\n2. Consultar crédito\n3. Pagar crédito\n4. Salir\n")
+    match accion:
+        case "1":
+            menu_tipos_creditos()
+        case "2":
+            creditos.mostrar_creditos()
+        case "3":
+            creditos.pagar_credito()
+        case "4":
+            print("Saliendo del menú de créditos.")
+            menu_principal()
+        case _:
+            print("Opción no válida. Por favor, intente de nuevo.")
 
 #Funcion para mostrar el menú principal
 def menu_principal():
@@ -15,7 +49,8 @@ def menu_principal():
         print("4. Depositar dinero")
         print("5. Retirar dinero")
         print("6. Creacion CDT")
-        print(". Salir")
+        print("7. Créditos")
+        print("11. Salir")
 
         accion = input("Seleccione una opción: ")
 
@@ -23,6 +58,7 @@ def menu_principal():
             case "1":
                 creacion.crear_clientes()
             case "2":  
+                
                 creacion.consultar_clientes()
             case "3":
                 cuentas.crear_cuentas()
@@ -32,8 +68,13 @@ def menu_principal():
                 cuentas.retirar_Dinero()
             case "6":
                 cuentas.creacion_cdt()
+            case "7":
+                menu_creditos()
             case "11":
                 print("Saliendo del sistema. ¡Hasta luego!")
                 break
             case _:
                 print("Opción no válida. Por favor, intente de nuevo.")
+
+
+menu_principal()

@@ -191,9 +191,9 @@ def creacion_cdt():
         }
     }
     if "CDT" not in cliente:
-        cliente["cuentas"] = {}
+        cliente["CDT"] = {}
 
-    cliente["cuentas"][idCDT] = new_CDT
+    cliente["CDT"][idCDT] = new_CDT
     guardar_cliente(cc, cliente)
     
 

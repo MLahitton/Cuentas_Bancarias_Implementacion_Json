@@ -94,11 +94,65 @@ def crear_clientes():
 
 def consultar_clientes():
     cc = input("Ingrese el número de cédula del cliente a consultar: ").strip()
-    cliente = consultar_cliente(cc)  # ✅ Llamada correcta
+    cliente = consultar_cliente(cc)
 
-    if cliente:
-        print(f"\nDatos del cliente {cc}:")
-        for clave, valor in cliente.items():
-            print(f"{clave}: {valor}")
-    else:
+    if not cliente:
         print(f"No se encontró ningún cliente con cédula {cc}.")
+        return
+
+    nombre = cliente.get("nombre", "No registrado")
+    print("\n" + "=" * 60)
+    print(f"{'RESUMEN DEL CLIENTE':^60}")
+    print("=" * 60)
+    print(f"{'Nombre':<15}: {nombre}")
+    print(f"{'Cédula':<15}: {cc}")
+    print("-" * 60)
+
+    # Cuentas
+    cuentas = cliente.get("cuentas", {})
+    print(f"{'CUENTAS':<60}")
+    if cuentas:
+        print(f"{'ID':<20}{'Saldo':>20}")
+        print("-" * 40)
+        for cid, datos in cuentas.items():
+            saldo = datos.get("saldo", 0.0)
+            print(f"{cid:<20}{f'$ {saldo:,.2f}':>20}")
+    else:
+        print("No hay cuentas registradas.")
+    print("-" * 60)
+
+    # Créditos
+    creditos = cliente.get("creditos", {})
+    print(f"{'CRÉDITOS':<60}")
+    if creditos:
+        print(f"{'ID':<20}{'Deuda total':>20}")
+        print("-" * 40)
+        for cid, datos in creditos.items():
+            monto = datos.get("monto", 0.0)
+            interes = datos.get("interes", 0.0)
+            deuda = monto + interes
+            print(f"{cid:<20}{f'$ {deuda:,.2f}':>20}")
+    else:
+        print("No hay créditos registrados.")
+    print("-" * 60)
+
+    # CDTs
+    # CDTs
+cdts = cliente.get("CDT", {})
+print(f"{'CDTs':<60}")
+if cdts:
+    print(f"{'ID':<20}{'Fecha de creación':<20}{'Monto invertido':>20}")
+    print("-" * 60)
+    for cid, datos in cdts.items():
+        fecha = datos.get("fecha_creacion", "Desconocida")
+        movimientos = datos.get("movimientos", {})
+        creacion = movimientos.get("1", {})
+        monto = creacion.get("monto inicial", 0.0)
+        print(f"{cid:<20}{fecha:<20}{f'$ {monto:,.2f}':>20}")
+else:
+    print("No hay CDTs registrados.")
+print("=" * 60)
+print("\n" + "=" * 60)
+print(f"{'FIN DEL RESUMEN':^60}")
+print("=" * 60)
+    
