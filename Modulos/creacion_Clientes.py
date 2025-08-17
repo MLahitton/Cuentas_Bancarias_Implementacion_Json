@@ -85,10 +85,11 @@ def crear_clientes():
         "contacto": contacto_telefonico,
         "ubicacion": {"pais": pais, "departamento": depatartamento, "ciudad": ciudad, "direccion": direccion},
         "cuentas": {},
+        "CDT": {},
         "creditos": {}
     }
     print(f'Cliente {name} creado exitosamente.')
-    guardar_cliente(clientes[cc])
+    guardar_cliente(cc,clientes[cc])
     
 
 def consultar_clientes():
