@@ -1,3 +1,80 @@
 {
-    "clientes": {}
+    "clientes": {
+        "1005199319": {
+            "cc": "1005199319",
+            "nombre": "Manuel",
+            "email": "@.",
+            "edad": 25,
+            "contacto": {
+                "movil": "3186081916"
+            },
+            "ubicacion": {
+                "pais": "Colombia",
+                "departamento": "Santander",
+                "ciudad": "Bucaramanga",
+                "direccion": "asd"
+            },
+            "cuentas": {},
+            "CDT": {
+                "CDT00001": {
+                    "id": "CDT00001",
+                    "tipo": "CDT",
+                    "fecha_creacion": "15/05/2020",
+                    "saldo": 0.0,
+                    "movimientos": {
+                        "1": {
+                            "tipo": "CREACION",
+                            "fecha": "15/05/2020",
+                            "monto inicial": 80000.0,
+                            "plazo": {
+                                "6": "meses"
+                            },
+                            "ganancia": 240000.0,
+                            "total_ganancia": 320000.0
+                        }
+                    }
+                }
+            },
+            "creditos": {
+                "CR00001": {
+                    "id": "CR00001",
+                    "tipo": "Libre Inversion",
+                    "fecha_creacion": "15/23/2025",
+                    "monto": 5000.0,
+                    "plazo": 5,
+                    "interes": 20000.0,
+                    "pago_mensual": 5000.0,
+                    "movimientos": {
+                        "1": {
+                            "tipo": "CREACION",
+                            "fecha": "15/23/2025",
+                            "monto_inicial": 5000.0,
+                            "plazo_meses": 5,
+                            "interes_total": 20000.0,
+                            "pago_mensual": 5000.0
+                        }
+                    }
+                },
+                "CR00002": {
+                    "id": "CR00002",
+                    "tipo": "Vivienda",
+                    "fecha_creacion": "13/12/2025",
+                    "monto": 5000.0,
+                    "plazo": 24,
+                    "interes": 1200.0,
+                    "pago_mensual": 258.33,
+                    "movimientos": {
+                        "1": {
+                            "tipo": "CREACION",
+                            "fecha": "13/12/2025",
+                            "monto_inicial": 5000.0,
+                            "plazo_meses": 24,
+                            "interes_total": 1200.0,
+                            "pago_mensual": 258.33
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

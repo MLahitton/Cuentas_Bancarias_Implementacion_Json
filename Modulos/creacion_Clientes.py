@@ -18,6 +18,10 @@ def crear_clientes():
         print("La cédula debe contener al menos 8 dígitos.")
         return
     name= input("Ingrese el nombre del cliente: ")
+    if not name.isalpha():
+        print("El nombre debe contener solo letras.")
+        return
+
     email = input("Ingrese el correo electrónico del cliente: ")
     if '@' not in email or '.' not in email:
         print("El correo electrónico no es válido.")

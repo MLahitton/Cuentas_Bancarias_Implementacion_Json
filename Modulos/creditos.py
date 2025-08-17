@@ -37,10 +37,11 @@ def credito_auto():
     if plazo <= 0:
         print("El plazo del crédito debe ser mayor a cero.")
         return
-    tasa_interes=0.5
+    tasa_interes=0.05
     interes = monto * (tasa_interes * plazo)
     interes = round(interes, 2)
     pago_mensual = round((monto + interes) / plazo, 2)
+    pago_total = monto + interes
     print(f"El pago mensual del crédito es: {pago_mensual}")
     print(f"El interés total del crédito es: {interes}")
     new_credito = {
@@ -58,7 +59,8 @@ def credito_auto():
                 "monto_inicial": monto,
                 "plazo_meses": plazo,
                 "interes_total": interes,
-                "pago_mensual": pago_mensual
+                "pago_mensual": pago_mensual,
+                "pago_total": pago_total
             }
         }
     }
@@ -96,10 +98,11 @@ def credito_libre():
     if plazo <= 0:
         print("El plazo del crédito debe ser mayor a cero.")
         return
-    tasa_interes=0.8
-    interes = monto * (tasa_interes * plazo)
+    tasa_interes=0.08
+    interes = (monto * tasa_interes) * plazo
     interes = round(interes, 2)
     pago_mensual = round((monto + interes) / plazo, 2)
+    pago_total = monto + interes
     print(f"El pago mensual del crédito es: {pago_mensual}")
     new_credito = {
         "id": idCredito,
@@ -116,7 +119,8 @@ def credito_libre():
                 "monto_inicial": monto,
                 "plazo_meses": plazo,
                 "interes_total": interes,
-                "pago_mensual": pago_mensual
+                "pago_mensual": pago_mensual,
+                "pago_total": pago_total
 
             }
         }
@@ -155,10 +159,11 @@ def credito_vivienda():
     if plazo <= 0:
         print("El plazo del crédito debe ser mayor a cero.")
         return
-    tasa_interes=0.1
-    interes = monto * (tasa_interes * plazo)
+    tasa_interes=0.01
+    interes =( monto * tasa_interes) * plazo
     interest = round(interes, 2)  
     pago_mensual = round((monto + interes) / plazo, 2)
+    pago_total = monto + interest
     print(f"El pago mensual del crédito es: {pago_mensual}")
     print(f"El interés total del crédito es: {interest}")
 
@@ -177,8 +182,9 @@ def credito_vivienda():
                 "monto_inicial": monto,
                 "plazo_meses": plazo,
                 "interes_total": interest,
-                "pago_mensual": pago_mensual
-                
+                "pago_mensual": pago_mensual,
+                "pago_total": pago_total
+
             }
         }
     }
