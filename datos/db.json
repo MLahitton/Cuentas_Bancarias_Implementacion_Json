@@ -1,22 +1,3 @@
 {
-    "clientes": {
-        "1005199319": {
-            "cc": "1005199319",
-            "nombre": "Manuel",
-            "email": "@.",
-            "edad": 25,
-            "contacto": {
-                "movil": "3186081916"
-            },
-            "ubicacion": {
-                "pais": "col",
-                "departamento": "s",
-                "ciudad": "b",
-                "direccion": "asd"
-            },
-            "cuentas": {},
-            "CDT": {},
-            "creditos": {}
-        }
-    }
+    "clientes": {}
 }
