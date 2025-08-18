@@ -6,124 +6,17 @@
             "email": "@.",
             "edad": 25,
             "contacto": {
-                "movil": "3186081916",
-                "fijo": "6318990"
+                "movil": "3186081916"
             },
             "ubicacion": {
                 "pais": "col",
-                "departamento": "san",
-                "ciudad": "bga",
+                "departamento": "s",
+                "ciudad": "b",
                 "direccion": "asd"
             },
-            "cuentas": {
-                "CU00002": {
-                    "id": "CU00002",
-                    "tipo": "ahorros",
-                    "fecha_creacion": "15/05/2020",
-                    "saldo": 1000.0,
-                    "movimientos": {
-                        "1": {
-                            "tipo": "CREACION",
-                            "fecha": "15/05/2020",
-                            "monto": 0.0,
-                            "saldo": 0.0
-                        },
-                        "2": {
-                            "tipo": "DEPOSITO",
-                            "fecha": "15/05/2020",
-                            "saldo": 100000.0
-                        },
-                        "3": {
-                            "tipo": "RETIRO",
-                            "fecha": "15/05/2020",
-                            "monto": 50000.0,
-                            "saldo": 50000.0
-                        },
-                        "4": {
-                            "tipo": "RETIRO",
-                            "fecha": "15/05/2021",
-                            "monto": 49000.0,
-                            "saldo": 1000.0
-                        }
-                    }
-                },
-                "CU00003": {
-                    "id": "CU00003",
-                    "tipo": "ahorros",
-                    "fecha_creacion": "15/05/2021",
-                    "saldo": 0.0,
-                    "movimientos": {
-                        "1": {
-                            "tipo": "CREACION",
-                            "fecha": "15/05/2021",
-                            "monto": 0.0,
-                            "saldo": 0.0
-                        }
-                    }
-                }
-            },
-            "CDT": {
-                "CDT00001": {
-                    "id": "CDT00001",
-                    "tipo": "CDT",
-                    "fecha_creacion": "15/09/2020",
-                    "saldo": 0.0,
-                    "movimientos": {
-                        "1": {
-                            "tipo": "CREACION",
-                            "fecha": "15/09/2020",
-                            "monto inicial": 1000000.0,
-                            "plazo": {
-                                "12": "meses"
-                            },
-                            "ganancia": 6000000.0,
-                            "total_ganancia": 7000000.0
-                        }
-                    }
-                }
-            },
-            "creditos": {
-                "CR00001": {
-                    "id": "CR00001",
-                    "tipo": "Vivienda",
-                    "fecha_creacion": "15/05/2025",
-                    "monto": 500000.0,
-                    "plazo": 5,
-                    "interes": 25000.0,
-                    "pago_mensual": 105000.0,
-                    "movimientos": {
-                        "1": {
-                            "tipo": "CREACION",
-                            "fecha": "15/05/2025",
-                            "monto_inicial": 500000.0,
-                            "plazo_meses": 5,
-                            "interes_total": 25000.0,
-                            "pago_mensual": 105000.0,
-                            "pago_total": 525000.0
-                        }
-                    }
-                },
-                "CR00002": {
-                    "id": "CR00002",
-                    "tipo": "AUTO",
-                    "fecha_creacion": "15/05/2020",
-                    "monto": 200000.0,
-                    "plazo": 3,
-                    "interes": 30000.0,
-                    "pago_mensual": 76666.67,
-                    "movimientos": {
-                        "1": {
-                            "tipo": "CREACION",
-                            "fecha": "15/05/2020",
-                            "monto_inicial": 200000.0,
-                            "plazo_meses": 3,
-                            "interes_total": 30000.0,
-                            "pago_mensual": 76666.67,
-                            "pago_total": 230000.0
-                        }
-                    }
-                }
-            }
+            "cuentas": {},
+            "CDT": {},
+            "creditos": {}
         }
     }
 }

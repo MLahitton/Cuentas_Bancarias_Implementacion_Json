@@ -235,6 +235,11 @@ def pagar_credito():
         "fecha": fecha,
         "monto_pagado": monto_pago
     }
+
+    if credito["monto"] == 0:
+        del cliente["creditos"][idCredito]
+        print(f'¡Crédito {idCredito} pagado en su totalidad y eliminado de la base de datos!')
+        
     guardar_cliente(cc, cliente)
     print(f'Pago de {monto_pago} realizado exitosamente. Nuevo saldo del crédito: {credito["monto"]}')
 
