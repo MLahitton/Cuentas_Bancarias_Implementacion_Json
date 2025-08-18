@@ -9,85 +9,123 @@ clientes={}
 
 
 def crear_clientes():
+    while True:
+        cc = input("Ingrese el número de cédula del cliente: ")
+        if cc in clientes:
+            print("El cliente ya existe.")
+        if not cc.isdigit() or len(cc) < 8:
+            print("La cédula debe contener al menos 8 dígitos.")
+        else:
+            break
+    
+    while True:
+        name= input("Ingrese el nombre del cliente: ")
+        if not name.isalpha():
+            print("El nombre debe contener solo letras.")
+        else :
+            break
 
-    cc = input("Ingrese el número de cédula del cliente: ")
-    if cc in clientes:
-        print("El cliente ya existe.")
-        return
-    if not cc.isdigit() or len(cc) < 8:
-        print("La cédula debe contener al menos 8 dígitos.")
-        return
-    name= input("Ingrese el nombre del cliente: ")
-    if not name.isalpha():
-        print("El nombre debe contener solo letras.")
-        return
+    while True:
+        email = input("Ingrese el correo electrónico del cliente: ")
+        if '@' not in email or '.' not in email:
+            print("El correo electrónico no es válido.")
+        else:
+            break
+    while True:
+        age= int(input("Ingrese la edad del cliente: "))
+        if age < 18:
+            print("El cliente debe ser mayor de edad.")
+        else:
+            break
 
-    email = input("Ingrese el correo electrónico del cliente: ")
-    if '@' not in email or '.' not in email:
-        print("El correo electrónico no es válido.")
-        return
-    age= int(input("Ingrese la edad del cliente: "))
-    if age < 18:
-        print("El cliente debe ser mayor de edad.")
-        return
-     
-    contacto = int(input("¿Qué medio de comunicación prefiere?\n1. Móvil\n2. Fijo\n3. Ambos\n"))
+    while True:
+        try:
+            contacto = int(input("¿Qué medio de comunicación prefiere?\n1. Móvil\n2. Fijo\n3. Ambos\n"))
+        except ValueError:
+            print("Debe ingresar una opción válida (1, 2 o 3).")
+            continue
+        if contacto not in [1, 2, 3]:
+            print("Opción no válida. Por favor, intente de nuevo.")
+            continue
+        else:
+            break
+
+    contacto_telefonico = {}
 
     if contacto == 1:
-        telefono = input("Ingrese el número de teléfono móvil: ")
-        if not telefono.isdigit() or len(telefono) != 10:
-            print("El número de teléfono móvil debe contener al menos 10 dígitos.")
-            return
-        contacto_telefonico = {"movil": telefono}
+        while True:
+            telefono = input("Ingrese el número de teléfono móvil: ")
+            if not telefono.isdigit() or len(telefono) != 10:
+                print("El número de teléfono móvil debe contener 10 dígitos.")
+                continue
+            contacto_telefonico = {"movil": telefono}
+            break
 
     elif contacto == 2:
-        telefono = input("Ingrese el número de teléfono fijo: ")
-        if not telefono.isdigit() or len(telefono) > 7:
-            print("El número de teléfono fijo debe contener al menos 7 dígitos.")
-            return
-        contacto_telefonico = {"fijo": telefono}
+        while True:
+            telefono = input("Ingrese el número de teléfono fijo: ")
+            if not telefono.isdigit() or len(telefono) < 7:
+                print("El número de teléfono fijo debe contener al menos 7 dígitos.")
+                continue
+            contacto_telefonico = {"fijo": telefono}
+            break
 
     elif contacto == 3:
-        telefono_movil = input("Ingrese el número de teléfono móvil: ")
-        if not telefono_movil.isdigit() or len(telefono_movil) < 10:
-            print("El número de teléfono móvil debe contener al menos 10 dígitos.")
-            return
-        telefono_fijo = input("Ingrese el número de teléfono fijo: ")
-        if not telefono_fijo.isdigit() or len(telefono_fijo) < 7:
-            print("El número de teléfono fijo debe contener al menos 7 dígitos.")
-            return
+        # Primero pide móvil
+        while True:
+            telefono_movil = input("Ingrese el número de teléfono móvil: ")
+            if not telefono_movil.isdigit() or len(telefono_movil) != 10:
+                print("El número de teléfono móvil debe contener 10 dígitos.")
+                continue
+            break
+        # Luego pide fijo
+        while True:
+            telefono_fijo = input("Ingrese el número de teléfono fijo: ")
+            if not telefono_fijo.isdigit() or len(telefono_fijo) < 7:
+                print("El número de teléfono fijo debe contener al menos 7 dígitos.")
+                continue
+            break
         contacto_telefonico = {
             "movil": telefono_movil,
             "fijo": telefono_fijo
         }
     else:
-        print("Opción no válida. Por favor, intente de nuevo.")
-        return
-    pais = input("Ingrese el país del cliente: ")
-    if not pais.isalpha():
-        print("El país debe contener solo letras.")
-        return
-    depatartamento = input("Ingrese el departamento del cliente: ")
-    if not depatartamento.isalpha():
-        print("El departamento debe contener solo letras.")
-        return
-    ciudad = input("Ingrese la ciudad del cliente: ")   
-    if not ciudad.isalpha():
-        print("La ciudad debe contener solo letras.")
-        return
-    direccion = input("Ingrese la dirección del cliente: ")
-    if not direccion:
-        print("La dirección no puede estar vacía.")
+        print("Opción no válida. Debe ser 1, 2 o 3.")
         return
     
-
+    while True:
+        pais = input("Ingrese el país del cliente: ")
+        if not pais.isalpha():
+            print("El país debe contener solo letras.")
+        else:
+            break
+    while True:
+        departamento = input("Ingrese el departamento del cliente: ")
+        if not departamento.isalpha():
+            print("El departamento debe contener solo letras.")
+        else:
+            break
+    while True:
+        ciudad = input("Ingrese la ciudad del cliente: ")
+        if not ciudad.isalpha():
+            print("La ciudad debe contener solo letras.")
+        else:
+            break
+    while True:
+        direccion = input("Ingrese la dirección del cliente: ")
+        if not direccion:
+            print("La dirección no puede estar vacía.")
+        else:
+            break
+    
+    # Crear el cliente
     clientes[cc] = {
         "cc": cc,
         "nombre": name,
         "email": email,
         "edad": age,
         "contacto": contacto_telefonico,
-        "ubicacion": {"pais": pais, "departamento": depatartamento, "ciudad": ciudad, "direccion": direccion},
+        "ubicacion": {"pais": pais, "departamento": departamento, "ciudad": ciudad, "direccion": direccion},
         "cuentas": {},
         "CDT": {},
         "creditos": {}
